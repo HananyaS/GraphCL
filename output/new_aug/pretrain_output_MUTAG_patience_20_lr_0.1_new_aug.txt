@@ -1,0 +1,228 @@
+bn_feat.weight torch.Size([109])
+bn_feat.bias torch.Size([109])
+conv_feat.weight torch.Size([109, 128])
+conv_feat.bias torch.Size([128])
+bns_conv.0.weight torch.Size([128])
+bns_conv.0.bias torch.Size([128])
+bns_conv.1.weight torch.Size([128])
+bns_conv.1.bias torch.Size([128])
+bns_conv.2.weight torch.Size([128])
+bns_conv.2.bias torch.Size([128])
+convs.0.weight torch.Size([128, 128])
+convs.0.bias torch.Size([128])
+convs.1.weight torch.Size([128, 128])
+convs.1.bias torch.Size([128])
+convs.2.weight torch.Size([128, 128])
+convs.2.bias torch.Size([128])
+bn_hidden.weight torch.Size([128])
+bn_hidden.bias torch.Size([128])
+bns_fc.0.weight torch.Size([128])
+bns_fc.0.bias torch.Size([128])
+lins.0.weight torch.Size([128, 128])
+lins.0.bias torch.Size([128])
+lin_class.weight torch.Size([2, 128])
+lin_class.bias torch.Size([2])
+proj_head.0.0.weight torch.Size([128, 128])
+proj_head.0.0.bias torch.Size([128])
+proj_head.0.2.weight torch.Size([128, 128])
+proj_head.0.2.bias torch.Size([128])
+proj_head.1.0.weight torch.Size([128, 128])
+proj_head.1.0.bias torch.Size([128])
+proj_head.1.2.weight torch.Size([128, 128])
+proj_head.1.2.bias torch.Size([128])
+epoch No. 1
+Chosen Augmentations: 1, 0
+4.593645734989897 [0.02086437 0.50963104 0.4695046  0.        ]
+min loss changed from inf to 4.593645734989897 after 1 iterations.
+Model saved!
+epoch No. 2
+Chosen Augmentations: 1, 0
+4.481652051844495 [0.         0.49991657 0.50008343 0.        ]
+min loss changed from 4.593645734989897 to 4.481652051844495 after 1 iterations.
+Model saved!
+epoch No. 3
+Chosen Augmentations: 1, 0
+4.03834822330069 [0.09220986 0.46438895 0.4434012  0.        ]
+min loss changed from 4.481652051844495 to 4.03834822330069 after 1 iterations.
+Model saved!
+epoch No. 4
+Chosen Augmentations: 0, 1
+3.8871227528186556 [0.11180669 0.42767081 0.4605225  0.        ]
+min loss changed from 4.03834822330069 to 3.8871227528186556 after 1 iterations.
+Model saved!
+epoch No. 5
+Chosen Augmentations: 0, 1
+3.702084059410907 [0.15257438 0.36056535 0.48686027 0.        ]
+min loss changed from 3.8871227528186556 to 3.702084059410907 after 1 iterations.
+Model saved!
+epoch No. 6
+Chosen Augmentations: 1, 0
+3.610171870982393 [0.11797647 0.44205235 0.43997118 0.        ]
+min loss changed from 3.702084059410907 to 3.610171870982393 after 1 iterations.
+Model saved!
+epoch No. 7
+Chosen Augmentations: 0, 1
+3.6408574936237743 [0.13315888 0.47280891 0.39403221 0.        ]
+epoch No. 8
+Chosen Augmentations: 1, 0
+3.5884962132636535 [0.11824137 0.43120488 0.45055375 0.        ]
+min loss changed from 3.610171870982393 to 3.5884962132636535 after 2 iterations.
+Model saved!
+epoch No. 9
+Chosen Augmentations: 0, 1
+3.5800831368628967 [0.09351034 0.43142284 0.47506682 0.        ]
+min loss changed from 3.5884962132636535 to 3.5800831368628967 after 1 iterations.
+Model saved!
+epoch No. 10
+Chosen Augmentations: 0, 1
+3.588288550681256 [0.20274719 0.38069478 0.41655803 0.        ]
+epoch No. 11
+Chosen Augmentations: 0, 0
+3.570104588853552 [0.22793825 0.34339724 0.4286645  0.        ]
+min loss changed from 3.5800831368628967 to 3.570104588853552 after 2 iterations.
+Model saved!
+epoch No. 12
+Chosen Augmentations: 0, 0
+3.5141697589387286 [0.25759571 0.32022777 0.42217652 0.        ]
+min loss changed from 3.570104588853552 to 3.5141697589387286 after 1 iterations.
+Model saved!
+epoch No. 13
+Chosen Augmentations: 0, 0
+3.51349338572076 [0.22601957 0.34714223 0.4268382  0.        ]
+min loss changed from 3.5141697589387286 to 3.51349338572076 after 1 iterations.
+Model saved!
+epoch No. 14
+Chosen Augmentations: 0, 0
+3.476147732836135 [0.24104907 0.30721187 0.45173907 0.        ]
+min loss changed from 3.51349338572076 to 3.476147732836135 after 1 iterations.
+Model saved!
+epoch No. 15
+Chosen Augmentations: 0, 0
+3.476956174728718 [0.22457265 0.34023532 0.43519203 0.        ]
+epoch No. 16
+Chosen Augmentations: 1, 0
+3.566028914553054 [0.24904886 0.32540761 0.42554353 0.        ]
+epoch No. 17
+Chosen Augmentations: 0, 1
+3.5295044564186258 [0.24449048 0.3217598  0.43374972 0.        ]
+epoch No. 18
+Chosen Augmentations: 1, 0
+3.4766916315606298 [0.25012922 0.35486048 0.3950103  0.        ]
+epoch No. 19
+Chosen Augmentations: 1, 0
+3.4172488527095064 [0.30182689 0.32390521 0.3742679  0.        ]
+min loss changed from 3.476147732836135 to 3.4172488527095064 after 5 iterations.
+Model saved!
+epoch No. 20
+Chosen Augmentations: 0, 1
+3.5478449476526137 [0.32672454 0.31625717 0.35701829 0.        ]
+epoch No. 21
+Chosen Augmentations: 1, 0
+3.5149504123850073 [0.38731653 0.31826566 0.29441781 0.        ]
+epoch No. 22
+Chosen Augmentations: 0, 1
+3.5147221595683 [0.48733165 0.28246406 0.23020429 0.        ]
+epoch No. 23
+Chosen Augmentations: 0, 0
+3.4779741206067674 [0.45707168 0.26849102 0.27443729 0.        ]
+epoch No. 24
+Chosen Augmentations: 0, 0
+3.4896795293118092 [0.51056721 0.24998324 0.23944954 0.        ]
+epoch No. 25
+Chosen Augmentations: 0, 0
+3.460671749520809 [0.54247233 0.2290757  0.22845196 0.        ]
+epoch No. 26
+Chosen Augmentations: 1, 0
+3.487480346192705 [0.57544022 0.17934066 0.24521912 0.        ]
+epoch No. 27
+Chosen Augmentations: 0, 0
+3.472966513735183 [0.55037838 0.15000488 0.29961674 0.        ]
+epoch No. 28
+Chosen Augmentations: 0, 0
+3.462710279099485 [0.58949495 0.16737645 0.2431286  0.        ]
+epoch No. 29
+Chosen Augmentations: 0, 0
+3.49397220002844 [0.60852527 0.15017876 0.24129597 0.        ]
+epoch No. 30
+Chosen Augmentations: 0, 0
+3.4235615730285645 [0.58124913 0.18264618 0.23610468 0.        ]
+epoch No. 31
+Chosen Augmentations: 0, 1
+3.4895042764379625 [0.51668788 0.23313841 0.25017371 0.        ]
+epoch No. 32
+Chosen Augmentations: 1, 0
+3.4955353635422726 [0.5184544  0.24477119 0.23677442 0.        ]
+epoch No. 33
+Chosen Augmentations: 0, 0
+3.451421930434856 [0.53441612 0.24503832 0.22054556 0.        ]
+epoch No. 34
+Chosen Augmentations: 0, 0
+3.4255678146443467 [0.54042675 0.23927059 0.22030267 0.        ]
+epoch No. 35
+Chosen Augmentations: 1, 0
+3.5082371640712657 [0.55469212 0.22538287 0.219925   0.        ]
+epoch No. 36
+Chosen Augmentations: 0, 0
+3.371770447873055 [0.53854431 0.2230191  0.23843659 0.        ]
+min loss changed from 3.4172488527095064 to 3.371770447873055 after 17 iterations.
+Model saved!
+epoch No. 37
+Chosen Augmentations: 0, 0
+3.5044531923659306 [0.50729556 0.28017004 0.2125344  0.        ]
+epoch No. 38
+Chosen Augmentations: 0, 0
+3.461724600893386 [0.5160812  0.30198106 0.18193774 0.        ]
+epoch No. 39
+Chosen Augmentations: 1, 0
+3.4165629528938455 [0.53342172 0.28092683 0.18565145 0.        ]
+epoch No. 40
+Chosen Augmentations: 0, 0
+3.432184168632994 [0.51507931 0.23735469 0.24756599 0.        ]
+epoch No. 41
+Chosen Augmentations: 0, 1
+3.4234736726639117 [0.53440278 0.20302072 0.2625765  0.        ]
+epoch No. 42
+Chosen Augmentations: 0, 0
+3.4255132218624684 [0.60813831 0.14206322 0.24979847 0.        ]
+epoch No. 43
+Chosen Augmentations: 1, 0
+3.409203625739889 [0.57931648 0.14784573 0.27283779 0.        ]
+epoch No. 44
+Chosen Augmentations: 0, 0
+3.4482016208324024 [0.63562702 0.12939887 0.23497411 0.        ]
+epoch No. 45
+Chosen Augmentations: 0, 0
+3.4061164653047604 [0.68712392 0.10085756 0.21201853 0.        ]
+epoch No. 46
+Chosen Augmentations: 0, 0
+3.3778003479572054 [0.62858981 0.12841442 0.24299577 0.        ]
+epoch No. 47
+Chosen Augmentations: 1, 0
+3.427572290948097 [0.65933858 0.10929191 0.23136951 0.        ]
+epoch No. 48
+Chosen Augmentations: 0, 1
+3.4340812855578484 [0.62373208 0.09591813 0.28034979 0.        ]
+epoch No. 49
+Chosen Augmentations: 0, 1
+3.396833749527627 [0.58840472 0.10253108 0.30906419 0.        ]
+epoch No. 50
+Chosen Augmentations: 0, 1
+3.3915949527253497 [0.54700214 0.09984737 0.35315049 0.        ]
+epoch No. 51
+Chosen Augmentations: 1, 0
+3.4113776125806443 [0.48267181 0.16505463 0.35227356 0.        ]
+epoch No. 52
+Chosen Augmentations: 1, 0
+3.4186181311911725 [0.50471086 0.17044198 0.32484717 0.        ]
+epoch No. 53
+Chosen Augmentations: 0, 1
+3.411678420736435 [0.50347725 0.17520781 0.32131494 0.        ]
+epoch No. 54
+Chosen Augmentations: 0, 1
+3.4253942002641393 [0.52275084 0.21189237 0.26535679 0.        ]
+epoch No. 55
+Chosen Augmentations: 0, 0
+3.446010376544709 [0.49525624 0.19925497 0.30548879 0.        ]
+epoch No. 56
+Chosen Augmentations: 1, 0
+3.4108701360986586 [0.49818506 0.24472456 0.25709038 0.        ]
