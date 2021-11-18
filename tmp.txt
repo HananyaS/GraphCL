@@ -1,0 +1,1 @@
+python main.py --dataset MUTAG --use_best_params True --use_nni False --new_aug False
