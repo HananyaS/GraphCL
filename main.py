@@ -157,11 +157,11 @@ def run_comparison(dataset=args.dataset, lr_vals=[args.lr] * 2, gamma_joao_vals=
                    use_best_params=args.use_best_params):
     if use_best_params:
         try:
-            with open(best_params_path := f'best_params/old_aug/{dataset}.json', 'r') as f:
+            with open(f'best_params/old_aug/{dataset}.json', 'r') as f:
                 old_bp = json.load(f)
                 old_lr, old_gamma = old_bp['lr'], old_bp['gamma_joao']
 
-            with open(best_params_path := f'best_params/new_aug/{dataset}.json', 'r') as f:
+            with open(f'best_params/new_aug/{dataset}.json', 'r') as f:
                 new_bp = json.load(f)
                 new_lr, new_gamma = new_bp['lr'], new_bp['gamma_joao']
 
@@ -186,7 +186,7 @@ def run_comparison(dataset=args.dataset, lr_vals=[args.lr] * 2, gamma_joao_vals=
     plt.title(f'Losses for old and new augmentations - {dataset}')
 
     plt.xlabel('Num epochs')
-    plt.xlabel('Loss')
+    plt.ylabel('Loss')
     plt.legend()
     plt.savefig(f'plots/comparison/{dataset}.png')
     plt.show()
@@ -220,6 +220,7 @@ if __name__ == '__main__':
 
                 lr, gamma_joao = min(losses_dict.keys(), key=lambda k: losses_dict[k])
 
+                print(f'Best params found! lr = {lr} ; gamma_joao = {gamma_joao}')
                 best_params_dict = {'lr': lr,
                                     'gamma_joao': gamma_joao}
 

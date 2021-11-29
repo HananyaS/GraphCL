@@ -41,7 +41,7 @@ def experiment(dataset, model_func, epochs, batch_size, lr, weight_decay,
     if not os.path.isdir(output_dir := f'./weights_joao/{aug_txt}'):
         os.mkdir(output_dir)
 
-    if not os.path.isdir(output_dir + '/develop'):
+    if develop and not os.path.isdir(output_dir + '/develop'):
         output_dir = output_dir + '/develop'
         os.mkdir(output_dir)
 
@@ -74,23 +74,7 @@ def experiment(dataset, model_func, epochs, batch_size, lr, weight_decay,
     print(f'Training finished after {epoch} epochs.\n'
           f'Min loss reached: {min_loss}')
 
-    best_params = {
-        'lr': lr,
-        'gamma_joao': gamma_joao
-    }
-
     if save_results:
-        # if not os.path.isdir(output_dir := f'best_params/{aug_txt}'):
-        #     os.mkdir(output_dir)
-        #
-        # if develop:
-        #     if not os.path.isdir(output_dir + f'/develop'):
-        #         output_dir += '/develop'
-        #         os.mkdir(output_dir)
-        #
-        # if not os.path.isfile(f'{output_dir}/{dataset.name}.json'):
-        #     with open(f'{output_dir}/{dataset.name}.json', 'w') as f:
-        #         json.dump(best_params, f)
         plot_val_loss(val_losses, dataset, patience, new_aug, lr, gamma_joao, develop=develop)
 
     return min_loss, val_losses
