@@ -54,17 +54,21 @@ class TUDatasetExt(InMemoryDataset):
                  pre_filter=None,
                  use_node_attr=False,
                  processed_filename='data.pt',
-                 new_aug=False):
-        self.new_aug = new_aug
+                 new_aug=False,
+                 combined=True):
+        # self.new_aug = new_aug
         self.name = name
         self.processed_filename = processed_filename
 
         self.set_aug_mode('none')
         self.set_aug_ratio(0.2)
-        self.augmentations = [node_drop, subgraph, edge_pert, attr_mask, lambda x, y:x] if not new_aug else \
-            [remove_by_louvain, lambda x:x]
-            # [remove_by_louvain, remove_by_embedding, lambda x:x]
-            # [remove_by_embedding]
+        if combined:
+            self.augmentations = [node_drop, subgraph, edge_pert, attr_mask, remove_by_louvain, lambda x, y:x]
+        elif new_aug:
+            self.augmentations = [remove_by_louvain, lambda x, y:x]
+        else:
+            self.augmentations = [node_drop, subgraph, edge_pert, attr_mask, lambda x, y:x]
+
         num_aug = len(self.augmentations)
         self.set_aug_prob(np.ones(num_aug ** 2)/(num_aug ** 2))
         super(TUDatasetExt, self).__init__(root, transform, pre_transform,
@@ -166,13 +170,8 @@ class TUDatasetExt(InMemoryDataset):
             n_aug = np.random.choice(num_augmentations ** 2, 1, p=self.aug_prob)[0]
             n_aug1, n_aug2 = n_aug // num_augmentations, n_aug % num_augmentations
 
-        if not self.new_aug:
-            data1 = self.augmentations[n_aug1](data1, self.aug_ratio)
-            data2 = self.augmentations[n_aug2](data2, self.aug_ratio)
-
-        else:
-            data1 = self.augmentations[n_aug1](data1)
-            data2 = self.augmentations[n_aug2](data2)
+        data1 = self.augmentations[n_aug1](data1, self.aug_ratio)
+        data2 = self.augmentations[n_aug2](data2, self.aug_ratio)
 
         return data, data1, data2
 

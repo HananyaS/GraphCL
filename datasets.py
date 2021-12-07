@@ -9,7 +9,8 @@ from feature_expansion import FeatureExpander
 from tu_dataset import TUDatasetExt
 
 
-def get_dataset(name, sparse=True, feat_str="deg+ak3+reall", root=None, new_aug: bool = False, develop: bool = False):
+def get_dataset(name, sparse=True, feat_str="deg+ak3+reall", root=None, new_aug: bool = False, develop: bool = False,
+                combined: bool = True):
     if root is None or root == '':
         path = osp.join(osp.expanduser('~'), 'pyG_data', name)
     else:
@@ -40,11 +41,7 @@ def get_dataset(name, sparse=True, feat_str="deg+ak3+reall", root=None, new_aug:
 
     dataset = TUDatasetExt(
         path, name, pre_transform=pre_transform,
-        use_node_attr=not develop, processed_filename="data_%s.pt" % feat_str, new_aug=new_aug)
-    # dataset = TUDatasetExt(
-    #     path, name, pre_transform=pre_transform,
-    #     use_node_attr=True, processed_filename="data_%s.pt" % feat_str, new_aug=new_aug)
-
+        use_node_attr=not develop, processed_filename="data_%s.pt" % feat_str, new_aug=new_aug, combined=combined)
 
     dataset.data.edge_attr = None
 

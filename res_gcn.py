@@ -1,3 +1,4 @@
+import math
 from functools import partial
 
 import torch
@@ -13,7 +14,7 @@ class ResGCN(torch.nn.Module):
     def __init__(self, dataset=None, hidden=128, num_feat_layers=1, num_conv_layers=3,
                  num_fc_layers=2, gfn=False, collapse=False, residual=False,
                  res_branch="BNConvReLU", global_pool="sum", dropout=0,
-                 edge_norm=True, new_aug=False):
+                 edge_norm=True):
         super(ResGCN, self).__init__()
         assert num_feat_layers == 1, "more feat layers are not now supported"
         self.num_augmentations = len(dataset.augmentations)
@@ -262,13 +263,15 @@ class ResGCN_graphcl(ResGCN):
         return x
 
     def loss_graphcl(self, x1, x2, mean=True):
+        # T = 1 / math.log(127)
         T = 0.5
         batch_size, _ = x1.size()
 
         x1_abs = x1.norm(dim=1)
         x2_abs = x2.norm(dim=1)
-        
+
         sim_matrix = torch.einsum('ik,jk->ij', x1, x2) / torch.einsum('i,j->ij', x1_abs, x2_abs)
+
         sim_matrix = torch.exp(sim_matrix / T)
         pos_sim = sim_matrix[range(batch_size), range(batch_size)]
         loss = pos_sim / (sim_matrix.sum(dim=1) - pos_sim)

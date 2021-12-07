@@ -7,9 +7,7 @@ from datasets import get_dataset
 from res_gcn import ResGCN_graphcl, vgae_encoder, vgae_decoder
 
 import experiment_joao
-import sys
 import os
-import shutil
 import json
 from itertools import product
 import warnings
@@ -34,7 +32,7 @@ parser.add_argument('--edge_norm', type=str2bool, default=True)
 parser.add_argument('--lr', type=float, default=0.01)
 parser.add_argument('--epochs', type=int, default=100)
 
-parser.add_argument('--dataset', type=str, default="MCF-7")
+parser.add_argument('--dataset', type=str, default="MUTAG")
 parser.add_argument('--aug_mode', type=str, default="sample")
 parser.add_argument('--aug_ratio', type=float, default=0.2)
 parser.add_argument('--suffix', type=int, default=0)
@@ -46,7 +44,8 @@ parser.add_argument('--comparison_mode', type=str2bool, default=False)
 parser.add_argument('--new_aug', type=str2bool, default=True)
 parser.add_argument('--patience', type=int, default=20)
 parser.add_argument('--use_best_params', type=str2bool, default=True)
-parser.add_argument('--develop', type=str2bool, default=True)
+parser.add_argument('--develop', type=str2bool, default=False)
+parser.add_argument('--combine', type=str2bool, default=True)
 
 args = parser.parse_args()
 
@@ -134,10 +133,12 @@ def run_experiment_graphcl(dataset_feat_net_triple
                            =create_n_filter_triple(args.dataset, 'deg+odeg100', 'ResGCN_graphcl', gfn_add_ak3=True,
                                                    reddit_odeg10=True, dd_odeg10_ak1=True),
                            get_model=get_model_with_default_configs,
-                           save_results=True, lr=args.lr, gamma_joao=args.gamma_joao, new_aug=args.new_aug):
+                           save_results=True, lr=args.lr, gamma_joao=args.gamma_joao, new_aug=args.new_aug,
+                           combined=args.combine):
     dataset_name, feat_str, net = dataset_feat_net_triple
     dataset = get_dataset(
-        dataset_name, sparse=True, feat_str=feat_str, root=args.data_root, new_aug=new_aug, develop=args.develop)
+        dataset_name, sparse=True, feat_str=feat_str, root=args.data_root, new_aug=new_aug, develop=args.develop,
+        combined=combined)
 
     if args.develop:
         dataset = dataset[:10]
@@ -148,20 +149,21 @@ def run_experiment_graphcl(dataset_feat_net_triple
                                          weight_decay=0, dataset_name=dataset_name, aug_mode=args.aug_mode,
                                          aug_ratio=args.aug_ratio, suffix=args.suffix, gamma_joao=gamma_joao,
                                          new_aug=new_aug, patience=args.patience, save_results=save_results,
-                                                  develop=args.develop)
+                                                  develop=args.develop, combined=combined)
 
     return loss, val_losses
 
 
 def run_comparison(dataset=args.dataset, lr_vals=[args.lr] * 2, gamma_joao_vals=[args.gamma_joao] * 2,
-                   use_best_params=args.use_best_params):
+                   use_best_params=args.use_best_params, combined=args.combine):
+    new_aug_txt = 'combined' if args.combine else 'new_aug'
     if use_best_params:
         try:
             with open(f'best_params/old_aug/{dataset}.json', 'r') as f:
                 old_bp = json.load(f)
                 old_lr, old_gamma = old_bp['lr'], old_bp['gamma_joao']
 
-            with open(f'best_params/new_aug/{dataset}.json', 'r') as f:
+            with open(f'best_params/{new_aug_txt}/{dataset}.json', 'r') as f:
                 new_bp = json.load(f)
                 new_lr, new_gamma = new_bp['lr'], new_bp['gamma_joao']
 
@@ -175,20 +177,20 @@ def run_comparison(dataset=args.dataset, lr_vals=[args.lr] * 2, gamma_joao_vals=
                                                           save_results=False, new_aug=False)
     print('Calculate loss with new augmentations..')
     min_loss_new, losses_new_aug = run_experiment_graphcl(lr=lr_vals[1], gamma_joao=gamma_joao_vals[1],
-                                                          save_results=False, new_aug=True)
+                                                          save_results=False, new_aug=True, combined=combined)
 
-    print(f'Min loss for old augmentations: {min_loss_old}\n'
-          f'Min loss for new augmentations: {min_loss_new}')
+    print(f'Min loss for old augmentations: {min_loss_old}')
+    print(f'Min loss for new augmentations{" (combined)" if combined else ""}: {min_loss_new}')
 
     plt.plot(range(1, len(losses_old_aug) + 1), losses_old_aug, label='Old augmentations')
     plt.plot(range(1, len(losses_new_aug) + 1), losses_new_aug, label='New augmentations')
 
-    plt.title(f'Losses for old and new augmentations - {dataset}')
+    plt.title(f'Losses for old and new augmentations - {dataset}{" (combined)" if combined else ""}')
 
     plt.xlabel('Num epochs')
     plt.ylabel('Loss')
     plt.legend()
-    plt.savefig(f'plots/comparison/{dataset}.png')
+    plt.savefig(f'plots/comparison/{"not_" if not combined else ""}combined/{dataset}.png')
     plt.show()
 
 
@@ -201,12 +203,19 @@ if __name__ == '__main__':
         run_comparison()
 
     else:
-        aug_txt = 'new_aug' if args.new_aug else 'old_aug'
+        if args.combine:
+            aug_txt = 'combined'
+        elif args.new_aug:
+            aug_txt = 'new_aug'
+        else:
+            aug_txt = 'old_aug'
+
         if not os.path.isdir(output_dir := f'output/{aug_txt}'):
             os.mkdir(output_dir)
 
         if args.use_best_params:
-            if args.develop or not os.path.isfile(f'best_params/{aug_txt}{"/develop" if args.develop else ""}/{args.dataset}.json'):
+            if args.develop or not\
+                    os.path.isfile(f'best_params/{aug_txt}{"/develop" if args.develop else ""}/{args.dataset}.json'):
                 print('Looking for best params.')
                 lr_space = [0.01, 0.001, 0.0001]
                 gamma_space = [0.01, 0.1, 1]
@@ -249,25 +258,6 @@ if __name__ == '__main__':
                 plt.savefig(f'{best_params_plot_path}/{args.dataset} - {aug_txt}.png')
                 plt.show()
 
-                # if not os.path.isfile(nni_path := f'nni_results/{aug_txt}/{args.dataset}.csv'):
-                #     raise FileExistsError(f"Best params don't exist! Use NNI first - save results at:\n"
-                #                           f"{nni_path}")
-                # else:
-                #     best_params_df = pd.read_csv(nni_path)
-                #     best_trial_num = np.argmin(best_params_df['reward'])
-                #     best_lr, best_gamma_joao = \
-                #         best_params_df['lr'][best_trial_num], best_params_df['gamma_joao'][best_trial_num]
-                #
-                #     lr, gamma_joao = best_lr, best_gamma_joao
-                #     best_params_dict = {'lr': lr,
-                #                         'gamma_joao': gamma_joao}
-                #
-                #     if not os.path.isdir(best_params_path := f'best_params/{aug_txt}'):
-                #         os.mkdir(best_params_path)
-                #
-                #     with open(f'best_params/{aug_txt}/{args.dataset}.json', 'w') as f:
-                #         json.dump(best_params_dict, f)
-
             else:
                 best_params_json_path = f'best_params/{aug_txt}/{args.dataset}.json'
                 with open(best_params_json_path, 'r') as f:
@@ -278,12 +268,5 @@ if __name__ == '__main__':
         else:
             lr, gamma_joao = args.lr, args.gamma_joao
 
-        # outputTmpFile = f'output/tmp/pretrain_output_{args.dataset}_patience_{args.patience}_lr_{lr}_gamma_' \
-        #                 f'{gamma_joao}.txt'
-
-        # sys.stdout = open(outputTmpFile, mode='w')
-
         loss = run_experiment_graphcl(lr=lr, gamma_joao=gamma_joao, save_results=True)
 
-        # shutil.move(outputTmpFile, outputTmpFile.replace('tmp/', aug_txt + '/'))
-        # sys.stdout.close()

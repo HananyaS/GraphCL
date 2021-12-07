@@ -1,5 +1,6 @@
-import json
 import os
+import shutil
+from time import time
 
 import torch
 from torch.optim import Adam
@@ -16,7 +17,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def experiment(dataset, model_func, epochs, batch_size, lr, weight_decay,
                dataset_name=None, aug_mode='uniform', aug_ratio=0.2, suffix=0, gamma_joao=0.1,
-               new_aug: bool = False, patience: int = 20, save_results=True, develop: bool = False):
+               new_aug: bool = False, patience: int = 20, save_results=True, develop: bool = False,
+               combined: bool = True):
     num_augmentations = len(dataset.augmentations)
     model = model_func(dataset).to(device)
     print_weights(model)
@@ -36,17 +38,27 @@ def experiment(dataset, model_func, epochs, batch_size, lr, weight_decay,
     min_loss, early_stopping_counter = math.inf, 0
     epoch = 0
 
-    aug_txt = 'new_aug' if new_aug else 'old_aug'
+    if combined:
+        aug_txt = 'combined'
+    elif new_aug:
+        aug_txt = 'new_aug'
+    else:
+        aug_txt = 'old_aug'
+
+    print(f'Aug mode: {aug_txt}')
 
     if not os.path.isdir(output_dir := f'./weights_joao/{aug_txt}'):
         os.mkdir(output_dir)
 
-    if develop and not os.path.isdir(output_dir + '/develop'):
+    if develop:
         output_dir = output_dir + '/develop'
+
+    if not os.path.isdir(output_dir):
+        output_dir = output_dir
         os.mkdir(output_dir)
 
-    weight_path = output_dir + '/' + dataset_name + '_' + str(lr) + '_' + str(
-        gamma_joao) + '_' + str(suffix) + '_patience_' + str(patience) + '.pt'
+    weight_tmp_path = output_dir + '/' + dataset_name + '_' + str(lr) + '_' + str(
+        gamma_joao) + '_' + str(suffix) + '_patience_' + str(patience) + '_temp.pt'
 
     while True:
         epoch += 1
@@ -62,7 +74,7 @@ def experiment(dataset, model_func, epochs, batch_size, lr, weight_decay,
             print(f'min loss changed from {min_loss} to {pretrain_loss} after {early_stopping_counter} iterations.')
             min_loss, early_stopping_counter = pretrain_loss, 0
             if save_results:
-                torch.save(model.state_dict(), weight_path)
+                torch.save(model.state_dict(), weight_tmp_path)
                 print('Model saved!')
 
         if develop and epoch >= 5:
@@ -71,23 +83,31 @@ def experiment(dataset, model_func, epochs, batch_size, lr, weight_decay,
         if not develop and early_stopping_counter > patience:
             break
 
+    if save_results:
+        shutil.move(weight_tmp_path, weight_tmp_path.replace('_temp', ''))
+
     print(f'Training finished after {epoch} epochs.\n'
           f'Min loss reached: {min_loss}')
 
     if save_results:
-        plot_val_loss(val_losses, dataset, patience, new_aug, lr, gamma_joao, develop=develop)
+        plot_val_loss(val_losses, dataset, patience, new_aug, combined, lr, gamma_joao, develop=develop)
 
     return min_loss, val_losses
 
 
-def plot_val_loss(val_loss, dataset, patience, new_aug, lr, gamma_joao, develop: bool = True,
+def plot_val_loss(val_loss, dataset, patience, new_aug, combined, lr, gamma_joao, develop: bool = True,
                   show: bool = False, save: bool = True):
     plt.plot(range(1, len(val_loss) + 1), val_loss)
     plt.title(f'Loss - {dataset.name}')
     plt.xlabel('Epochs')
     plt.ylabel('Loss')
     if save:
-        aug_txt = 'new_aug' if new_aug else 'old_aug'
+        if combined:
+            aug_txt = 'combined'
+        elif new_aug:
+            aug_txt = 'new_aug'
+        else:
+            aug_txt = 'old_aug'
         if not os.path.isdir(output_dir := f'plots/{aug_txt}'):
             os.mkdir(output_dir)
 

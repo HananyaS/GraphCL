@@ -26,7 +26,7 @@ def timer(func):
 
 
 # @timer
-def remove_by_louvain(data,
+def remove_by_louvain(data, ignored_arg,
                       min_community_size_ratio: float = .1,
                       removing_ratio_range=(.2, .6)):
     G = tg_utils.to_networkx(data).to_undirected()
@@ -90,7 +90,7 @@ def remove_by_louvain(data,
 
 
 # @timer
-def remove_by_embedding(data,
+def remove_by_embedding(data, ignored_arg,
                         n_dimensions: int = 10,
                         dim: int = None):
     assert not dim or dim in range(n_dimensions)
