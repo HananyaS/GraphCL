@@ -1,0 +1,147 @@
+Namespace(data_root='datasets', epochs=100, batch_size=128, lr=0.001, epoch_select='test_max', n_layers_feat=1, n_layers_conv=3, n_layers_fc=2, hidden=128, global_pool='sum', skip_connection=False, res_branch='BNConvReLU', dropout=0, edge_norm=True, with_eval_mode=True, dataset='NCI1', n_splits=100, suffix='0', model='graphcl', pretrain_lr='0.01', pretrain_epoch='100', pretrain_gamma='0.1', pretrain_k_folds=5, new_aug=False)
+../pretrain_joaov2/weights_joao/NCI1_0.01_0.1_0_old_aug.pt ./results_joao/NCI1_100.res 0.01_100_0.1_0
+bn_feat.weight torch.Size([139])
+bn_feat.bias torch.Size([139])
+conv_feat.weight torch.Size([139, 128])
+conv_feat.bias torch.Size([128])
+bns_conv.0.weight torch.Size([128])
+bns_conv.0.bias torch.Size([128])
+bns_conv.1.weight torch.Size([128])
+bns_conv.1.bias torch.Size([128])
+bns_conv.2.weight torch.Size([128])
+bns_conv.2.bias torch.Size([128])
+convs.0.weight torch.Size([128, 128])
+convs.0.bias torch.Size([128])
+convs.1.weight torch.Size([128, 128])
+convs.1.bias torch.Size([128])
+convs.2.weight torch.Size([128, 128])
+convs.2.bias torch.Size([128])
+bn_hidden.weight torch.Size([128])
+bn_hidden.bias torch.Size([128])
+bns_fc.0.weight torch.Size([128])
+bns_fc.0.bias torch.Size([128])
+lins.0.weight torch.Size([128, 128])
+lins.0.bias torch.Size([128])
+lin_class.weight torch.Size([2, 128])
+lin_class.bias torch.Size([2])
+proj_head.0.0.weight torch.Size([128, 128])
+proj_head.0.0.bias torch.Size([128])
+proj_head.0.2.weight torch.Size([128, 128])
+proj_head.0.2.bias torch.Size([128])
+proj_head.1.0.weight torch.Size([128, 128])
+proj_head.1.0.bias torch.Size([128])
+proj_head.1.2.weight torch.Size([128, 128])
+proj_head.1.2.bias torch.Size([128])
+proj_head.2.0.weight torch.Size([128, 128])
+proj_head.2.0.bias torch.Size([128])
+proj_head.2.2.weight torch.Size([128, 128])
+proj_head.2.2.bias torch.Size([128])
+proj_head.3.0.weight torch.Size([128, 128])
+proj_head.3.0.bias torch.Size([128])
+proj_head.3.2.weight torch.Size([128, 128])
+proj_head.3.2.bias torch.Size([128])
+proj_head.4.0.weight torch.Size([128, 128])
+proj_head.4.0.bias torch.Size([128])
+proj_head.4.2.weight torch.Size([128, 128])
+proj_head.4.2.bias torch.Size([128])
+00/001: Train Acc: 0.459, Test Accuracy: 0.652
+00/010: Train Acc: 1.000, Test Accuracy: 0.630
+00/020: Train Acc: 1.000, Test Accuracy: 0.591
+00/030: Train Acc: 1.000, Test Accuracy: 0.582
+00/040: Train Acc: 1.000, Test Accuracy: 0.601
+00/050: Train Acc: 1.000, Test Accuracy: 0.608
+00/060: Train Acc: 1.000, Test Accuracy: 0.633
+00/070: Train Acc: 1.000, Test Accuracy: 0.642
+00/080: Train Acc: 1.000, Test Accuracy: 0.640
+00/090: Train Acc: 1.000, Test Accuracy: 0.613
+01/001: Train Acc: 0.514, Test Accuracy: 0.667
+01/010: Train Acc: 0.973, Test Accuracy: 0.642
+01/020: Train Acc: 1.000, Test Accuracy: 0.657
+01/030: Train Acc: 1.000, Test Accuracy: 0.674
+01/040: Train Acc: 1.000, Test Accuracy: 0.672
+01/050: Train Acc: 1.000, Test Accuracy: 0.664
+01/060: Train Acc: 1.000, Test Accuracy: 0.672
+01/070: Train Acc: 1.000, Test Accuracy: 0.672
+01/080: Train Acc: 1.000, Test Accuracy: 0.669
+01/090: Train Acc: 1.000, Test Accuracy: 0.669
+02/001: Train Acc: 0.486, Test Accuracy: 0.494
+02/010: Train Acc: 1.000, Test Accuracy: 0.438
+02/020: Train Acc: 1.000, Test Accuracy: 0.487
+02/030: Train Acc: 1.000, Test Accuracy: 0.509
+02/040: Train Acc: 1.000, Test Accuracy: 0.518
+02/050: Train Acc: 1.000, Test Accuracy: 0.523
+02/060: Train Acc: 1.000, Test Accuracy: 0.530
+02/070: Train Acc: 1.000, Test Accuracy: 0.533
+02/080: Train Acc: 1.000, Test Accuracy: 0.535
+02/090: Train Acc: 1.000, Test Accuracy: 0.528
+03/001: Train Acc: 0.649, Test Accuracy: 0.526
+03/010: Train Acc: 0.973, Test Accuracy: 0.513
+03/020: Train Acc: 1.000, Test Accuracy: 0.584
+03/030: Train Acc: 1.000, Test Accuracy: 0.603
+03/040: Train Acc: 1.000, Test Accuracy: 0.599
+03/050: Train Acc: 1.000, Test Accuracy: 0.608
+03/060: Train Acc: 1.000, Test Accuracy: 0.613
+03/070: Train Acc: 1.000, Test Accuracy: 0.606
+03/080: Train Acc: 1.000, Test Accuracy: 0.601
+03/090: Train Acc: 1.000, Test Accuracy: 0.594
+04/001: Train Acc: 0.459, Test Accuracy: 0.591
+04/010: Train Acc: 1.000, Test Accuracy: 0.613
+04/020: Train Acc: 1.000, Test Accuracy: 0.659
+04/030: Train Acc: 1.000, Test Accuracy: 0.635
+04/040: Train Acc: 1.000, Test Accuracy: 0.606
+04/050: Train Acc: 1.000, Test Accuracy: 0.599
+04/060: Train Acc: 1.000, Test Accuracy: 0.603
+04/070: Train Acc: 1.000, Test Accuracy: 0.594
+04/080: Train Acc: 1.000, Test Accuracy: 0.589
+04/090: Train Acc: 1.000, Test Accuracy: 0.589
+05/001: Train Acc: 0.568, Test Accuracy: 0.664
+05/010: Train Acc: 1.000, Test Accuracy: 0.613
+05/020: Train Acc: 1.000, Test Accuracy: 0.591
+05/030: Train Acc: 1.000, Test Accuracy: 0.596
+05/040: Train Acc: 1.000, Test Accuracy: 0.672
+05/050: Train Acc: 1.000, Test Accuracy: 0.676
+05/060: Train Acc: 1.000, Test Accuracy: 0.681
+05/070: Train Acc: 1.000, Test Accuracy: 0.691
+05/080: Train Acc: 1.000, Test Accuracy: 0.693
+05/090: Train Acc: 1.000, Test Accuracy: 0.696
+06/001: Train Acc: 0.432, Test Accuracy: 0.625
+06/010: Train Acc: 1.000, Test Accuracy: 0.623
+06/020: Train Acc: 1.000, Test Accuracy: 0.567
+06/030: Train Acc: 1.000, Test Accuracy: 0.582
+06/040: Train Acc: 1.000, Test Accuracy: 0.620
+06/050: Train Acc: 1.000, Test Accuracy: 0.635
+06/060: Train Acc: 1.000, Test Accuracy: 0.633
+06/070: Train Acc: 1.000, Test Accuracy: 0.633
+06/080: Train Acc: 1.000, Test Accuracy: 0.635
+06/090: Train Acc: 1.000, Test Accuracy: 0.635
+07/001: Train Acc: 0.432, Test Accuracy: 0.586
+07/010: Train Acc: 1.000, Test Accuracy: 0.620
+07/020: Train Acc: 1.000, Test Accuracy: 0.620
+07/030: Train Acc: 1.000, Test Accuracy: 0.606
+07/040: Train Acc: 1.000, Test Accuracy: 0.623
+07/050: Train Acc: 1.000, Test Accuracy: 0.606
+07/060: Train Acc: 1.000, Test Accuracy: 0.606
+07/070: Train Acc: 1.000, Test Accuracy: 0.601
+07/080: Train Acc: 1.000, Test Accuracy: 0.603
+07/090: Train Acc: 1.000, Test Accuracy: 0.606
+08/001: Train Acc: 0.649, Test Accuracy: 0.652
+08/010: Train Acc: 1.000, Test Accuracy: 0.652
+08/020: Train Acc: 1.000, Test Accuracy: 0.560
+08/030: Train Acc: 1.000, Test Accuracy: 0.642
+08/040: Train Acc: 1.000, Test Accuracy: 0.674
+08/050: Train Acc: 1.000, Test Accuracy: 0.676
+08/060: Train Acc: 1.000, Test Accuracy: 0.664
+08/070: Train Acc: 1.000, Test Accuracy: 0.657
+08/080: Train Acc: 1.000, Test Accuracy: 0.655
+08/090: Train Acc: 1.000, Test Accuracy: 0.655
+09/001: Train Acc: 0.486, Test Accuracy: 0.591
+09/010: Train Acc: 0.973, Test Accuracy: 0.577
+09/020: Train Acc: 1.000, Test Accuracy: 0.501
+09/030: Train Acc: 1.000, Test Accuracy: 0.521
+09/040: Train Acc: 1.000, Test Accuracy: 0.526
+09/050: Train Acc: 1.000, Test Accuracy: 0.518
+09/060: Train Acc: 1.000, Test Accuracy: 0.533
+09/070: Train Acc: 1.000, Test Accuracy: 0.538
+09/080: Train Acc: 1.000, Test Accuracy: 0.533
+09/090: Train Acc: 1.000, Test Accuracy: 0.535
+1.0 0.6187348365783691 0.041116099804639816 276.99688720703125

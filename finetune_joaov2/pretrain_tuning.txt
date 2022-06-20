@@ -1,0 +1,8 @@
+dataset: MUTAG   lr: 0.01   gamma: 0.01   acc: 0.675438642501831
+dataset: NCI1   lr: 0.01   gamma: 0.1   acc: 0.6187348365783691
+dataset: NCI1   lr: 0.01   gamma: 0.1 patience: 10   acc: 0.5829682946205139
+dataset: MUTAG   lr: 0.01   gamma: 0.1 patience: 20   acc: 0.7023391723632812
+dataset: NCI1   lr: 0.01   gamma: 0.1 patience: 20   acc: 0.623114287853241
+dataset: MUTAG   lr: 0.01   gamma: 0.1 patience: 20 old_aug   acc: 0.7207602262496948
+dataset: NCI1   lr: 0.01   gamma: 0.1 patience: 20 old_aug   acc: 0.6194647550582886
+dataset: PROTEINS   lr: 0.1   gamma: 0.1 patience: 20 old_aug   acc: 0.5956885814666748

@@ -1,0 +1,59 @@
+Namespace(aug_mode='sample', aug_ratio=0.2, batch_size=128, data_root='datasets', dataset='NCI1', dropout=0, edge_norm=True, epochs=100, gamma_joao=0.1, global_pool='sum', hidden=128, lr=0.001, model='joao', n_layers_conv=3, n_layers_fc=2, n_layers_feat=1, res_branch='BNConvReLU', skip_connection=False, suffix=3)
+bn_feat.weight torch.Size([139])
+bn_feat.bias torch.Size([139])
+conv_feat.weight torch.Size([139, 128])
+conv_feat.bias torch.Size([128])
+bns_conv.0.weight torch.Size([128])
+bns_conv.0.bias torch.Size([128])
+bns_conv.1.weight torch.Size([128])
+bns_conv.1.bias torch.Size([128])
+bns_conv.2.weight torch.Size([128])
+bns_conv.2.bias torch.Size([128])
+convs.0.weight torch.Size([128, 128])
+convs.0.bias torch.Size([128])
+convs.1.weight torch.Size([128, 128])
+convs.1.bias torch.Size([128])
+convs.2.weight torch.Size([128, 128])
+convs.2.bias torch.Size([128])
+bn_hidden.weight torch.Size([128])
+bn_hidden.bias torch.Size([128])
+bns_fc.0.weight torch.Size([128])
+bns_fc.0.bias torch.Size([128])
+lins.0.weight torch.Size([128, 128])
+lins.0.bias torch.Size([128])
+lin_class.weight torch.Size([2, 128])
+lin_class.bias torch.Size([2])
+proj_head.0.weight torch.Size([128, 128])
+proj_head.0.bias torch.Size([128])
+proj_head.2.weight torch.Size([128, 128])
+proj_head.2.bias torch.Size([128])
+3.35481797442239 [0.09542275 0.12407522 0.         0.07693934 0.         0.14500524
+ 0.0424213  0.06807823 0.12992191 0.01734046 0.         0.04892286
+ 0.         0.         0.         0.05450532 0.1371028  0.
+ 0.03596021 0.         0.         0.02430436 0.         0.
+ 0.        ]
+3.2868937903077065 [0.12405339 0.1525039  0.         0.09091139 0.         0.17148416
+ 0.         0.02323196 0.15730818 0.         0.         0.00847581
+ 0.         0.         0.         0.07996671 0.17401221 0.
+ 0.0180523  0.         0.         0.         0.         0.
+ 0.        ]
+3.2406185879324476 [0.15299786 0.17035064 0.         0.09964447 0.         0.18533352
+ 0.         0.         0.16338876 0.         0.         0.
+ 0.         0.         0.         0.06554129 0.16274345 0.
+ 0.         0.         0.         0.         0.         0.
+ 0.        ]
+3.216572879555742 [0.17086179 0.1873868  0.         0.08857565 0.         0.20322298
+ 0.         0.         0.13730519 0.         0.         0.
+ 0.         0.         0.         0.06045933 0.15218827 0.
+ 0.         0.         0.         0.         0.         0.
+ 0.        ]
+3.198023316169887 [0.16664696 0.18357584 0.         0.09003989 0.         0.20723015
+ 0.         0.         0.13208288 0.         0.         0.
+ 0.         0.         0.         0.08569202 0.13473226 0.
+ 0.         0.         0.         0.         0.         0.
+ 0.        ]
+3.1815083020214905 [0.16505936 0.18738378 0.         0.07257942 0.         0.22861876
+ 0.         0.         0.1369858  0.         0.         0.
+ 0.         0.         0.         0.08789065 0.12148222 0.
+ 0.         0.         0.         0.         0.         0.
+ 0.        ]

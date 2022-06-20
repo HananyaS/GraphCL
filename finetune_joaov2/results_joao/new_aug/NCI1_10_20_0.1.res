@@ -1,0 +1,30 @@
+0.1_100_0.1_0
+Train acc mean 0.9986486434936523
+Test acc mean 0.7347930669784546
+Test acc std  0.003113763965666294
+Duration time mean 294.6818542480469
+~~~~~~~~~~~~~~~
+0.1_100_0.1_0
+Train acc mean 0.8235135078430176
+Test acc mean 0.7017031908035278
+Test acc std  0.0027243850752711298
+Duration time mean 401.07562255859375
+~~~~~~~~~~~~~~~
+0.1_100_0.1_0
+Train acc mean 0.8335135579109192
+Test acc mean 0.7019464373588562
+Test acc std  0.0026609946042299272
+Duration time mean 414.35211181640625
+~~~~~~~~~~~~~~~
+0.1_100_0.1_0
+Train acc mean 0.8313512802124023
+Test acc mean 0.7070559859275818
+Test acc std  0.0025549378246068955
+Duration time mean 309.8139953613281
+~~~~~~~~~~~~~~~
+0.1_100_0.1_0
+Train acc mean 0.8227027058601379
+Test acc mean 0.7046228647232056
+Test acc std  0.004146894812583924
+Duration time mean 323.80145263671875
+~~~~~~~~~~~~~~~

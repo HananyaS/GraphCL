@@ -1,0 +1,20 @@
+authorName: Shachar Hananya
+experimentName: GraphCL_automated
+trialConcurrency: 1
+maxExecDuration: 12h
+maxTrialNum: 500
+trainingServicePlatform: local
+searchSpacePath: pretrain.json
+useAnnotation: false
+tuner:
+  builtinTunerName: TPE
+  classArgs:
+    optimize_mode: minimize
+  # The path and the running command of trial
+trial:
+  command: python main.py --dataset NCI1 --new_aug False --use_nni True
+  codeDir: .
+  gpuNum: 4
+localConfig:
+  maxTrialNumPerGpu: 4
+  useActiveGpu: true

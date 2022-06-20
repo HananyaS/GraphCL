@@ -1,0 +1,35 @@
+Namespace(aug_mode='sample', aug_ratio=0.2, batch_size=128, data_root='datasets', dataset='PROTEINS', dropout=0, edge_norm=True, epochs=100, gamma_joao=0.1, global_pool='sum', hidden=128, lr=0.001, model='joao', n_layers_conv=3, n_layers_fc=2, n_layers_feat=1, res_branch='BNConvReLU', skip_connection=False, suffix=2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+dataset_name: PROTEINS
+feat_str: deg+odeg100 
+net: ResGCN_graphcl
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bn_feat.weight torch.Size([106])
+bn_feat.bias torch.Size([106])
+conv_feat.weight torch.Size([106, 128])
+conv_feat.bias torch.Size([128])
+bns_conv.0.weight torch.Size([128])
+bns_conv.0.bias torch.Size([128])
+bns_conv.1.weight torch.Size([128])
+bns_conv.1.bias torch.Size([128])
+bns_conv.2.weight torch.Size([128])
+bns_conv.2.bias torch.Size([128])
+convs.0.weight torch.Size([128, 128])
+convs.0.bias torch.Size([128])
+convs.1.weight torch.Size([128, 128])
+convs.1.bias torch.Size([128])
+convs.2.weight torch.Size([128, 128])
+convs.2.bias torch.Size([128])
+bn_hidden.weight torch.Size([128])
+bn_hidden.bias torch.Size([128])
+bns_fc.0.weight torch.Size([128])
+bns_fc.0.bias torch.Size([128])
+lins.0.weight torch.Size([128, 128])
+lins.0.bias torch.Size([128])
+lin_class.weight torch.Size([2, 128])
+lin_class.bias torch.Size([2])
+proj_head.0.weight torch.Size([128, 128])
+proj_head.0.bias torch.Size([128])
+proj_head.2.weight torch.Size([128, 128])
+proj_head.2.bias torch.Size([128])

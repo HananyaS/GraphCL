@@ -1,0 +1,9 @@
+lr = 0.01, gamma_joao: 0.01, loss: 3.1341540409700714
+lr = 0.01, gamma_joao: 0.1, loss: 3.1837785258200335
+lr = 0.01, gamma_joao: 1, loss: 3.149639585592451
+lr = 0.001, gamma_joao: 0.01, loss: 3.140133290714301
+lr = 0.001, gamma_joao: 0.1, loss: 3.1574893063292304
+lr = 0.001, gamma_joao: 1, loss: 3.1282323724742063
+lr = 0.0001, gamma_joao: 0.01, loss: 3.192474706880658
+lr = 0.0001, gamma_joao: 0.1, loss: 3.184912072103969
+lr = 0.0001, gamma_joao: 1, loss: 3.1850684169145107

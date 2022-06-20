@@ -1,0 +1,52 @@
+bn_feat.weight torch.Size([106])
+bn_feat.bias torch.Size([106])
+conv_feat.weight torch.Size([106, 128])
+conv_feat.bias torch.Size([128])
+bns_conv.0.weight torch.Size([128])
+bns_conv.0.bias torch.Size([128])
+bns_conv.1.weight torch.Size([128])
+bns_conv.1.bias torch.Size([128])
+bns_conv.2.weight torch.Size([128])
+bns_conv.2.bias torch.Size([128])
+convs.0.weight torch.Size([128, 128])
+convs.0.bias torch.Size([128])
+convs.1.weight torch.Size([128, 128])
+convs.1.bias torch.Size([128])
+convs.2.weight torch.Size([128, 128])
+convs.2.bias torch.Size([128])
+bn_hidden.weight torch.Size([128])
+bn_hidden.bias torch.Size([128])
+bns_fc.0.weight torch.Size([128])
+bns_fc.0.bias torch.Size([128])
+lins.0.weight torch.Size([128, 128])
+lins.0.bias torch.Size([128])
+lin_class.weight torch.Size([2, 128])
+lin_class.bias torch.Size([2])
+proj_head.0.0.weight torch.Size([128, 128])
+proj_head.0.0.bias torch.Size([128])
+proj_head.0.2.weight torch.Size([128, 128])
+proj_head.0.2.bias torch.Size([128])
+proj_head.1.0.weight torch.Size([128, 128])
+proj_head.1.0.bias torch.Size([128])
+proj_head.1.2.weight torch.Size([128, 128])
+proj_head.1.2.bias torch.Size([128])
+epoch No. 1
+Chosen Augmentations: 0, 0
+4.5428389406161385 [0.         0.49771566 0.50228434 0.        ]
+min loss changed from inf to 4.5428389406161385 after 1 iterations.
+Model saved!
+epoch No. 2
+Chosen Augmentations: 1, 0
+4.596312122310697 [0.        0.4973992 0.5026008 0.       ]
+epoch No. 3
+Chosen Augmentations: 1, 0
+4.417895092154449 [0.         0.46648196 0.53351804 0.        ]
+min loss changed from 4.5428389406161385 to 4.417895092154449 after 2 iterations.
+Model saved!
+epoch No. 4
+Chosen Augmentations: 1, 0
+4.34844930452585 [0.         0.48833247 0.51166753 0.        ]
+min loss changed from 4.417895092154449 to 4.34844930452585 after 1 iterations.
+Model saved!
+epoch No. 5
+Chosen Augmentations: 0, 1
